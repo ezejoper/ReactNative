@@ -16,7 +16,8 @@ export const styles = StyleSheet.create({
     resultado:{
         color:'white',
         fontSize:60,
-        textAlign:'right'
+        textAlign:'right',
+        marginBottom:10
         
     }, 
     resultadoPeq:{
@@ -42,5 +43,14 @@ export const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'center',
         marginBottom:18
-    }
+    },
+    botonwhite:{
+        height:40,
+        width:70,
+        borderRadius:100,
+        bottom:100,
+        backgroundColor:'white'
+    },
+    
+
 });
