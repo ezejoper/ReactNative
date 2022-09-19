@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { styles } from '../theme/appTheme';
@@ -9,6 +9,12 @@ interface Props extends StackScreenProps<any, any>{
 }
 
 export const Pagina1Screen = (  { navigation }: Props ) => {
+
+  // useEffect(() => {
+  //   navigation.setOptions({ //setOptions cambia el titulo
+  //     headerLeft: ()=> <Text>Hola mundo</Text>
+  //   })}, [])
+  
     
   return (
     <View style={ styles.globalMargin }>
