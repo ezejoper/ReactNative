@@ -1,8 +1,10 @@
 import { StackScreenProps } from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/Ionicons';
 import React, { useEffect } from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { styles } from '../theme/appTheme';
+import { styles, colores } from '../theme/appTheme';
+import { color } from 'react-native-reanimated';
 
 interface Props extends StackScreenProps<any, any>{
 
@@ -38,7 +40,7 @@ export const Pagina1Screen = (  { navigation }: Props ) => {
             nombre:'Pedro'
           }) }
         >
-          <Text style={ styles.textoBoton } >Pedro</Text>
+          <Icon name="man-outline" size={40} color='white'  />
         </TouchableOpacity>
         
         <TouchableOpacity 
@@ -50,7 +52,7 @@ export const Pagina1Screen = (  { navigation }: Props ) => {
             nombre:'Maria'
           }) }
         >
-          <Text style={ styles.textoBoton }>Maria</Text>
+          <Icon name="woman-outline" size={40} color='white'  />
         </TouchableOpacity>
 
         </View>

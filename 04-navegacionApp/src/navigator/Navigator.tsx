@@ -28,7 +28,8 @@ export const MyStack=()=> {
         },
         cardStyle:{
           backgroundColor:'white'
-        }
+        },
+        headerShown:false
       }}
     >
 
