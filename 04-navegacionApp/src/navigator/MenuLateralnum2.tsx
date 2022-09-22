@@ -15,12 +15,11 @@ export const MenuLateralNum2 = () => {
     screenOptions={{
       headerShadowVisible:false,
       headerTransparent:false,
-      headerTitle:'Navegation',
-     
+      
 
     }}
     drawerContent={ ( props )=> <MenuInterno {...props }/>}>
-      <Drawer.Screen name="Tabs"  component={ Tabs } />
+      <Drawer.Screen name="Navegation"  component={ Tabs } />
       <Drawer.Screen name="SettingScreen"component={ SettingsScreen } />
     </Drawer.Navigator>
   );
@@ -43,7 +42,7 @@ const MenuInterno = ( { navigation }: DrawerContentComponentProps )=>{
       <View style={styles.menuContenedor}>
 
         <TouchableOpacity 
-        onPress={()=>navigation.navigate("Tabs")} //solamente puedo mandar la que estan definidas en mi Stack
+        onPress={()=>navigation.navigate("Navegation")} //solamente puedo mandar la que estan definidas en mi Stack
         style={styles.menuBoton}>
           <Text style={styles.color}><Icon name='home-outline' size={20} color='black'  /> Navegacion</Text>
         </TouchableOpacity>
