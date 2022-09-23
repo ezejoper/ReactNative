@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Text, View } from 'react-native';
 import { styles } from '../theme/appTheme';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParams } from '../navigator/Navigator';
+import { AuthContext } from '../context/AuthContex';
 
 
 //Forma Rapida
@@ -19,7 +20,7 @@ interface Props extends StackScreenProps<RootStackParams, 'PersonaScreen'>{} //P
 export const PersonaScreen = ({ navigation, route }:Props) => {
     //Forma rapida:
     // const params = route.params as RouteParams; //aqui los "trata como lo que esta definido en dicha interfaz"
-
+    const {changeUsername}= useContext(AuthContext)
     const params = route.params
 
     useEffect(() => {
@@ -28,6 +29,9 @@ export const PersonaScreen = ({ navigation, route }:Props) => {
         })
     }, [])
     
+    useEffect(() => {
+      changeUsername(params.nombre)
+    }, [])
 
     // console.log(JSON.stringify(props,null,3))
   return (
