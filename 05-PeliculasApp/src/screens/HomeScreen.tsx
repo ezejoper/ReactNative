@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {  View , ActivityIndicator, Dimensions, FlatList, Text, ScrollView} from 'react-native';
+import {  View , ActivityIndicator, Dimensions, ScrollView} from 'react-native';
 import { useMovies } from '../hooks/useMovies';
 import { PosterMovie } from '../components/PosterMovie';
 import Carousel from 'react-native-snap-carousel';
@@ -11,7 +11,7 @@ const widthWindow = Dimensions.get('window').width
 export const HomeScreen = ( ) => {
 
 
-const { peliculasEstreno, isLoading } = useMovies()
+const { nowPlaying,popular,topRated,upcoming, isLoading} = useMovies()
 
 if (isLoading) {
     return(
@@ -28,7 +28,7 @@ return (
     <View style={{height:440}}>  
     {/* Carrusel principal */}
     <Carousel
-        data={ peliculasEstreno }
+        data={ nowPlaying}
         inactiveSlideOpacity={0.9}
         itemWidth={300}
         sliderWidth={widthWindow}
@@ -40,7 +40,10 @@ return (
 
 
     {/* peliculas Populares */}
-    <HorizontalSlider movies={peliculasEstreno} title='Populares'/>
+    <HorizontalSlider movies={popular} title='Populares'/>
+    <HorizontalSlider movies={topRated} title='Top Peliculas'/>
+    <HorizontalSlider movies={upcoming} title='Proximos Estrenos'/>
+    
     
 
     </View>
