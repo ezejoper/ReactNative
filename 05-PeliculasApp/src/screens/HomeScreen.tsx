@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
 import {  View , ActivityIndicator, Dimensions, ScrollView} from 'react-native';
 import ImageColors from 'react-native-image-colors'
 import { useMovies } from '../hooks/useMovies';
@@ -8,6 +8,8 @@ import Carousel from 'react-native-snap-carousel';
 import { HorizontalSlider } from '../components/HorizontalSlider';
 import { Background } from '../components/Background';
 import { getImageColors } from '../helpers/getColors';
+import { GradientContex } from '../context/GradientContext';
+import { useEffect } from 'react';
 
 const widthWindow = Dimensions.get('window').width
 
@@ -15,15 +17,23 @@ export const HomeScreen = ( ) => {
 
 
 const { nowPlaying,popular,topRated,upcoming, isLoading} = useMovies()
+const { setMainColor } = useContext(GradientContex)
 
 const getPosterColor = async (index:number)=>{
     const movie=nowPlaying[index]
     const uri= `https://image.tmdb.org/t/p/w500${movie.poster_path}`
     
-    const[primary,secundary]= await getImageColors( uri )
+    const[primary='green',secondary='white']= await getImageColors( uri )
 
-    console.log({primary,secundary})
+    setMainColor({ primary, secondary })
 }
+
+useEffect(() => {
+    if(nowPlaying.length > 0){
+        getPosterColor(0)
+    }
+}, [nowPlaying])
+
 
 if (isLoading) {
     return(
