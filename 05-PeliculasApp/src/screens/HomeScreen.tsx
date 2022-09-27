@@ -1,10 +1,13 @@
 
 import React from 'react'
 import {  View , ActivityIndicator, Dimensions, ScrollView} from 'react-native';
+import ImageColors from 'react-native-image-colors'
 import { useMovies } from '../hooks/useMovies';
 import { PosterMovie } from '../components/PosterMovie';
 import Carousel from 'react-native-snap-carousel';
 import { HorizontalSlider } from '../components/HorizontalSlider';
+import { Background } from '../components/Background';
+import { getImageColors } from '../helpers/getColors';
 
 const widthWindow = Dimensions.get('window').width
 
@@ -12,6 +15,15 @@ export const HomeScreen = ( ) => {
 
 
 const { nowPlaying,popular,topRated,upcoming, isLoading} = useMovies()
+
+const getPosterColor = async (index:number)=>{
+    const movie=nowPlaying[index]
+    const uri= `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    
+    const[primary,secundary]= await getImageColors( uri )
+
+    console.log({primary,secundary})
+}
 
 if (isLoading) {
     return(
@@ -22,7 +34,9 @@ if (isLoading) {
 }
 
 
+
 return (
+    <Background>
     <ScrollView>
     <View style={{marginTop:20}}>
     <View style={{height:440}}>  
@@ -32,6 +46,7 @@ return (
         inactiveSlideOpacity={0.9}
         itemWidth={300}
         sliderWidth={widthWindow}
+        onSnapToItem={index => getPosterColor ( index )}
         renderItem={ ( {item} : any )=><PosterMovie
             movie={item }/> }
         
@@ -48,5 +63,6 @@ return (
 
     </View>
     </ScrollView>
+    </Background>
     )
 }
