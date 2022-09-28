@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     },
     imageContainer:{
       width:'100%',
+      
       height:screenHeight * 0.7,
       shadowColor: "#000",
   shadowOffset: {
@@ -81,7 +82,8 @@ overflow:'hidden'
     },
     marginContainer:{
       marginHorizontal:20,
-      marginTop:20
+      marginTop:20,
+      
     },
     subTitle:{
       fontSize:14,
