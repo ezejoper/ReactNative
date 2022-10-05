@@ -1,36 +1,27 @@
 import React from 'react'
 import { Text, View ,FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { FlatListMenuItem } from '../components/FlatListMenuItem';
+import { MenuItem } from '../interface/appInterface';
 import { styles } from '../theme/appTheme';
 
 
-interface MenuItem{
-  name:string,
-  icon:string
-  components: string
-}
-const menuItems=[{
+
+const menuItems: MenuItem[]=[{
   name:'Animation 101',
   icon:'bookmark-outline',
   components:'Animation101Screen'
 },
 {
-  name:'battery-dead-outline',
-  icon:'bookmark-outline',
-  components:'Animation101Screen'
+  name:'Animation 102',
+  icon:'battery-dead-outline',
+  components:'Animation102Screen'
 }
 ]
 
 export const HomeScreen = () => {
 
-  const renderMenu=( menuItem: MenuItem )=>{
-    return(
-      <View >
-        
-        <Text style={{color:'black'}}>{menuItem.name} - {menuItem.icon}</Text>
-      </View>
-    )
-  }
+
   const renderListHeader=()=>{
     return(
       <View style={{marginTop:20, marginBottom:20}}>
@@ -52,7 +43,7 @@ export const HomeScreen = () => {
 
       <FlatList 
       data={ menuItems }
-      renderItem={({item})=>renderMenu(item)}
+      renderItem={({item})=><FlatListMenuItem menuItem={item}/>}
       keyExtractor={(item)=>item.name}
       ListHeaderComponent={renderListHeader} //genera una lista de "componentes" ubicados en el header
       ItemSeparatorComponent={separador} //utilizado para separar componentes de la flatList
