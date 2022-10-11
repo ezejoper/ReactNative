@@ -1,23 +1,9 @@
 import React from 'react'
 import { Text, View ,FlatList } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons'
 import { FlatListMenuItem } from '../components/FlatListMenuItem';
-import { MenuItem } from '../interface/appInterface';
+import { menuItems } from '../data/menuItems';
 import { styles } from '../theme/appTheme';
 
-
-
-const menuItems: MenuItem[]=[{
-  name:'Animation 101',
-  icon:'bookmark-outline',
-  components:'Animation101Screen'
-},
-{
-  name:'Animation 102',
-  icon:'battery-dead-outline',
-  components:'Animation102Screen'
-}
-]
 
 export const HomeScreen = () => {
 
