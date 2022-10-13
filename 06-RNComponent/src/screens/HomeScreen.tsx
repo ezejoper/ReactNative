@@ -3,18 +3,13 @@ import { Text, View ,FlatList } from 'react-native'
 import { FlatListMenuItem } from '../components/FlatListMenuItem';
 import { menuItems } from '../data/menuItems';
 import { styles } from '../theme/appTheme';
+import { HeaderTitle } from '../components/HeaderTitle';
 
 
 export const HomeScreen = () => {
 
 
-  const renderListHeader=()=>{
-    return(
-      <View style={{marginTop:20, marginBottom:20}}>
-        <Text style={styles.title}>Opciones de Menu</Text>
-      </View>
-    )
-  }
+
   const separador=()=>{
     return(
       <View style={{borderBottomWidth:2,
@@ -31,7 +26,7 @@ export const HomeScreen = () => {
       data={ menuItems }
       renderItem={({item})=><FlatListMenuItem menuItem={item}/>}
       keyExtractor={(item)=>item.name}
-      ListHeaderComponent={renderListHeader} //genera una lista de "componentes" ubicados en el header
+      ListHeaderComponent={()=><HeaderTitle title='Opciones de Menu'/>} //genera una lista de "componentes" ubicados en el header
       ItemSeparatorComponent={separador} //utilizado para separar componentes de la flatList
       /> 
     
