@@ -24,5 +24,11 @@ export const menuItems: MenuItem[]=[{
     name:'TextInput',
     icon:'document-text-outline',
     components:'TextInputScreen'
-  }
+  },
+  {
+    
+    name:'Section List',
+    icon:'list-outline',
+    components:'SectionListScreen'
+  },
   ]
