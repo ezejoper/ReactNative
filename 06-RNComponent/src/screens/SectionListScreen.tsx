@@ -2,6 +2,7 @@
 import React from 'react'
 import { SectionList, Text, View } from 'react-native';
 import { HeaderTitle } from '../components/HeaderTitle';
+import { Separador } from '../components/Separador';
 import { styles } from '../theme/appTheme';
 
 
@@ -28,12 +29,26 @@ const casas: Casas[] = [
 export const SectionListScreen = () => {
   return (
     <View style={{...styles.globalMargin,flex:1}}>
-        {/* <HeaderTitle
-        title='Section List'
+        {/* <HeaderTitle```
+      title='Section List'
         /> */}
         <SectionList
         sections={ casas }
         stickySectionHeadersEnabled
+        ListHeaderComponent={()=>(
+          
+            <HeaderTitle
+          title='Section List'
+          />
+          
+        )}
+        ListFooterComponent={()=>
+          <View style={{marginBottom:60}}>
+        <HeaderTitle
+          title={'Total de casas: '+ casas.length}
+          />
+          </View>
+          }
         keyExtractor={(item,index)=>item + index}
         renderItem={({item})=><Text style={{color:'black'}}>{item}</Text>}
         renderSectionHeader={({section})=>(
@@ -41,6 +56,12 @@ export const SectionListScreen = () => {
         <HeaderTitle
         title={section.casa}/>
         </View>)}
+        renderSectionFooter={({section})=>(
+          <HeaderTitle
+        title={'Total: '+section.data.length}/>
+        )}
+        SectionSeparatorComponent={()=><Separador/>}
+        // ItemSeparatorComponent={()=><Separador/>}
         />
     </View>
   )
