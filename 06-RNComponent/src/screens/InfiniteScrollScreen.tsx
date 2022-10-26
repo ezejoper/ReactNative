@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { HeaderTitle } from '../components/HeaderTitle';
 
@@ -9,9 +9,13 @@ export const InfiniteScrollScreen = () => {
 
     const renderItem=(item:number)=>{
         return(
-            <Text style={styles.texItem}>
-                {item}
-            </Text>
+            <Image
+            source={{uri:`https://picsum.photos/id/${item}/500/400`}}
+            style={{
+                width:'100%',
+                height:400
+            }}
+            />
         )
     }
 
@@ -23,7 +27,7 @@ export const InfiniteScrollScreen = () => {
         setNumber([...number,...newArray])
     }
   return (
-    <View style={{backgroundColor:'green', flex:1}}>
+    <View style={{backgroundColor:'white', flex:1}}>
         
         <FlatList
         data={number}
@@ -34,13 +38,14 @@ export const InfiniteScrollScreen = () => {
             />}
         onEndReached={loadMore}
         onEndReachedThreshold={0.5}
+        ListFooterComponent={<ActivityIndicator size={20} color='white'/>}
         />
     </View>
   )
 }
 const styles = StyleSheet.create({
     texItem:{
-        backgroundColor:'red',
+        backgroundColor:'white',
         height:150,
         color:'black'
     }
