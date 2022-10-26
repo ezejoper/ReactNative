@@ -13,6 +13,8 @@
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^5.9.8",
     "@react-navigation/stack": "^5.14.9",
+    "@types/react-native-snap-carousel": "^3.8.5",
+    "deprecated-react-native-prop-types": "^2.3.0",
     "react": "18.1.0",
     "react-native": "0.70.1",
     "react-native-gesture-handler": "^2.6.2",
@@ -20,6 +22,7 @@
     "react-native-reanimated": "^2.10.0",
     "react-native-safe-area-context": "^4.4.1",
     "react-native-screens": "^3.17.0",
+    "react-native-snap-carousel": "^3.9.1",
     "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
