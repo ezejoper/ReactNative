@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { MenuItem } from '../interface/appInterface';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useNavigation, useTheme } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 interface Props{
   menuItem:MenuItem
@@ -11,7 +12,7 @@ interface Props{
 
 export const FlatListMenuItem = ({menuItem:{name,icon,components}}:Props) => {
   const navigation=useNavigation()
-  const {colors}=useTheme()
+  const { theme:{colors} } = useContext(ThemeContext)
     return(
       <TouchableOpacity
       onPress={()=>navigation.navigate(components)}
@@ -19,7 +20,7 @@ export const FlatListMenuItem = ({menuItem:{name,icon,components}}:Props) => {
         <View style={styles.container}>
           <Icon
           name={icon}
-          color='#5856d6'
+          color={colors.primary}
           size={22}
           />
           <Text style={styles.itemText}>{name}</Text>
@@ -28,7 +29,7 @@ export const FlatListMenuItem = ({menuItem:{name,icon,components}}:Props) => {
 
           <Icon
           name='caret-forward-outline'
-          color='#5856d6'
+          color={colors.primary}
           size={22}
           
           />

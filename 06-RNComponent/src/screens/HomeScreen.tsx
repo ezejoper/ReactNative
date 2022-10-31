@@ -9,7 +9,7 @@ import { Separador } from '../components/Separador';
 
 export const HomeScreen = () => {
 
-
+  
 
  
   return (
