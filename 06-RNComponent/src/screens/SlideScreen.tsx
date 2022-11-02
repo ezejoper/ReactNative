@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { Dimensions, Image, ImageSourcePropType, StyleSheet, Text, TouchableOpacity, View,Animated } from 'react-native';
 import  { color, FadeIn } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -6,6 +6,7 @@ import Carousel,{ Pagination } from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StackScreenProps } from '@react-navigation/stack';
 import { useAnimation } from '../hooks/useAnimation';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 const{ width: sliderWidth,height } = Dimensions.get('window')
 
@@ -37,6 +38,7 @@ interface Props extends StackScreenProps<any, any>{
 }
 export const SlideScreen = ({navigation}:Props) => {
 
+  const { theme:{colors} } = useContext(ThemeContext)
   const [activeIndex, setActiveIndex]=useState(0)
   const{ fadeIn,opacity }=useAnimation()
   const isVisible = useRef(false) // para usarlo necesitas el .current
@@ -45,7 +47,7 @@ export const SlideScreen = ({navigation}:Props) => {
     return(
     <View style={{
       flex:1,
-      backgroundColor:'white',
+      backgroundColor:colors.background,
       borderRadius:5,
       padding:40,
       justifyContent:'center'
@@ -119,7 +121,7 @@ export const SlideScreen = ({navigation}:Props) => {
         
           <Text style={{
             fontSize:18,
-            color:'white'
+            color:colors.text
           }}
           >Ingresar</Text>
 
@@ -143,6 +145,6 @@ const styles = StyleSheet.create({
     },
     subtitle:{
       fontSize:16,
-      color:"black"
+     
     }
 });

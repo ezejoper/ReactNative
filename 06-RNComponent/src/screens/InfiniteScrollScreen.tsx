@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { HeaderTitle } from '../components/HeaderTitle';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 export const InfiniteScrollScreen = () => {
-
+    const { theme:{colors} } = useContext(ThemeContext)
     const [number, setNumber] = useState([0,1,2,3,4,5])
 
     const renderItem=(item:number)=>{
@@ -27,7 +28,7 @@ export const InfiniteScrollScreen = () => {
         setNumber([...number,...newArray])
     }
   return (
-    <View style={{backgroundColor:'white', flex:1}}>
+    <View style={{backgroundColor:colors.background, flex:1}}>
         
         <FlatList
         data={number}

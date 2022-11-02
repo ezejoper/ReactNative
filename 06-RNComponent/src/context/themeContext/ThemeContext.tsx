@@ -1,5 +1,6 @@
-import { createContext, useReducer } from "react";
-import { ThemeState, themeReducer, lightTheme } from './themeReducer';
+import { createContext, useEffect, useReducer } from "react";
+import { useColorScheme } from "react-native";
+import { ThemeState, themeReducer, lightTheme, darkTheme } from './themeReducer';
 
 interface ContextTheme{
     theme: ThemeState,
@@ -8,9 +9,17 @@ interface ContextTheme{
 }
 export const ThemeContext = createContext({} as ContextTheme)
 
+const colorScheme=useColorScheme()
+
 export const ThemeProvider=({children}:any)=>{
 
-    const [theme, dispatch] = useReducer( themeReducer,lightTheme) //TODO: Necesito leer el estado o el tema global del telefono
+    const [theme, dispatch] = useReducer( themeReducer, (colorScheme === 'dark') ? darkTheme : lightTheme) //TODO: Necesito leer el estado o el tema global del telefono
+    
+    //  useEffect(() => {
+    //    (colorScheme === 'light' )?   setLightTheme() : setDarkTheme()
+    //  }, [colorScheme])
+    
+    
     const setDarkTheme = ()=>{
         dispatch({type:'dark_theme'})
         console.log('dark')

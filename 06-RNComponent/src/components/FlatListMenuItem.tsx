@@ -23,7 +23,7 @@ export const FlatListMenuItem = ({menuItem:{name,icon,components}}:Props) => {
           color={colors.primary}
           size={22}
           />
-          <Text style={styles.itemText}>{name}</Text>
+          <Text style={{...styles.itemText, color:colors.text}}>{name}</Text>
 
           <View style={{flex:1}}/>
 
@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     },
     itemText:{
       marginLeft:6,
-      color:'black',
       fontSize:16
     }
 });
